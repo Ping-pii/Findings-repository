@@ -1,0 +1,69 @@
+# Example finding — for illustration purposes
+# This is a representative example showing the expected format and level of detail.
+
+id: PIIRATES-2025-001
+date_published: 2025-04-01
+version: "1.0"
+
+sector: energy
+environment: OT/ICS
+asset_type: SCADA remote access gateway
+
+cvss_score: 9.1
+severity: critical
+
+mitre_tactic: Initial Access
+mitre_technique: T0822 — External Remote Services
+mitre_subtechnique: ""
+
+description: >
+  An industrial remote desktop interface was found exposed on a public IP address
+  without authentication. The gateway firmware retained default manufacturer
+  credentials that had never been changed. No VPN, MFA, or IP allowlist was in place.
+  The service was discoverable via standard internet scanning tools.
+
+technical_detail: >
+  The exposed service was reachable directly from the internet on a standard RDP port.
+  Default credentials (username/password combination documented in the manufacturer's
+  public manual) granted immediate administrative access to the HMI interface.
+  No network segmentation existed between the remote access gateway and the
+  operational SCADA network, enabling direct interaction with industrial processes.
+
+impact: >
+  An unauthenticated remote attacker could gain full administrative control of the
+  SCADA HMI with no prior knowledge of the environment.
+  Potential consequences include: disruption or manipulation of monitored industrial
+  processes, loss of visibility for operators, and cascading failures in
+  interconnected systems. Confidentiality, integrity and availability of the
+  operational environment were all at risk.
+
+remediation: >
+  Immediate: Take the remote access interface offline until hardening is complete.
+  Short-term: Deploy VPN with MFA as the sole remote access path to OT environments.
+  Rotate all default credentials. Remove direct internet exposure of any OT service.
+  Long-term: Implement strict IT/OT network segmentation with a demilitarised zone (DMZ).
+  Establish a periodic review process for all remotely accessible OT assets.
+  Apply a "deny by default" policy for all inbound connections to the OT network.
+
+remediation_complexity: low
+remediation_priority: immediate
+
+regulatory_relevance:
+  - NIS2 — Article 21(2)(e) — security in network and information systems acquisition
+  - NIS2 — Article 21(2)(h) — basic cyber hygiene practices
+  - IEC 62443-3-3 — SR 1.1 — Human user identification and authentication
+  - CER Directive — Article 13 — resilience measures for critical infrastructure operators
+
+cve_candidate: false
+cve_id: ""
+disclosure_status: internal
+
+tags:
+  - default-credentials
+  - exposed-service
+  - missing-authentication
+  - ot-ics
+  - remote-access
+  - internet-exposed
+
+related_findings: []
