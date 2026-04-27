@@ -120,7 +120,6 @@ You are free to share and adapt the material for any purpose, including commerci
 PIIRATES is a French offensive cybersecurity company specialising in penetration testing and vulnerability assessment. Over 5 years, we have conducted 220+ penetration tests for 160 clients across regulated sectors including energy, OT/ICS, cloud, AI and public administration.
 
 - Website: [piirates.fr](https://www.piirates.fr)
-- On PASSI/ANSSI certification path
 - Active participant: FIC, SIDO, Minalogic, Digital League
 
 ---
